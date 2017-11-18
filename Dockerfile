@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:9
 
 RUN echo "deb http://toolbelt.heroku.com/ubuntu ./" > /etc/apt/sources.list.d/heroku.list
 RUN wget -O- https://toolbelt.heroku.com/apt/release.key | apt-key add -
