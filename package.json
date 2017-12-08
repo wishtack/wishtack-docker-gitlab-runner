@@ -1,0 +1,10 @@
+{
+    "name": "wishtack-docker-gitlab-runner",
+    "version": "0.1.0",
+    "license": "MIT",
+    "scripts": {
+        "build": "docker build -t wishtack-docker-gitlab-runner .",
+        "cp": "docker cp \"${SRC_PATH}\" wishtack-docker-gitlab-runner_bash:/",
+        "run:bash": "docker run -i -t --name=wishtack-docker-gitlab-runner_bash wishtack-docker-gitlab-runner /bin/bash"
+    }
+}

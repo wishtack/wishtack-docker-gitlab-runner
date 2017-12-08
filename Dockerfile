@@ -1,15 +1,20 @@
-FROM node:9
+FROM node:9-stretch
 
-RUN echo "deb http://toolbelt.heroku.com/ubuntu ./" > /etc/apt/sources.list.d/heroku.list
+# Https repositories support.
+RUN apt-get update
+RUN apt-get install apt-transport-https
+
+RUN echo "deb https://toolbelt.heroku.com/ubuntu ./" > /etc/apt/sources.list.d/heroku.list
 RUN wget -O- https://toolbelt.heroku.com/apt/release.key | apt-key add -
 
-RUN apt-key adv --keyserver pgp.mit.edu --recv D101F7899D41F3C3
-RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
+RUN echo "deb https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update
+RUN apt-get install -y \
     google-chrome-stable \
     heroku-toolbelt \
     mongodb \
@@ -25,5 +30,3 @@ RUN heroku --version
 
 RUN easy_install --upgrade pip
 RUN easy_install virtualenv
-
-RUN npm install -g yarn
