@@ -30,3 +30,4 @@ RUN heroku --version
 
 RUN easy_install --upgrade pip
 RUN easy_install virtualenv
+RUN pip install pipenv
