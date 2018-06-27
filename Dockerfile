@@ -31,4 +31,4 @@ RUN heroku --version
 RUN easy_install --upgrade pip
 RUN easy_install virtualenv
 # 2018.06.25 breaks pipenv update. Downgrading 🤢.
-RUN pip install pipenv
+RUN pip install pipenv==2018.05.18
