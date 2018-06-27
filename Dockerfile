@@ -28,6 +28,7 @@ RUN apt-get install -y \
 RUN gem install dpl
 RUN heroku --version
 
-RUN easy_install --upgrade pip
+# Pipenv 2018.6.25 doesn't work with pip 10.0.1. Downgrading pip 🤢.
+RUN easy_install --upgrade pip==9.0.2
 RUN easy_install virtualenv
 RUN pip install pipenv
