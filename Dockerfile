@@ -1,4 +1,4 @@
-FROM node:9-stretch
+FROM node:11-stretch
 
 # Https repositories support.
 RUN apt-get update
